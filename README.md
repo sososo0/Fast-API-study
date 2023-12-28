@@ -4,6 +4,50 @@ Fast API를 활용한 간단한 웹 애플리케이션 만들기
 
 - **Fast API는 파이썬 표준 타입 힌트에 기초한 Python3.6+의 API를 빌드하기 위한 웹 프레임워크** 
 
+## 서비스 소개 
+
+- 할 일을 적고 수행 여부를 체크하는 ToDo 서비스 
+
+### 서비스 기능 
+
+#### GET 
+
+- 전체 ToDo 조회
+
+```
+/api/v1/todos
+```
+
+- 단일 ToDo 조회 
+
+```
+/api/v1/todos/{id}
+```
+
+#### POST 
+
+- ToDo 생성 
+
+```
+/api/v1/todos 
+```
+
+#### PATCH 
+
+- ToDo 수정 
+
+```
+/api/v1/todos/{id}
+```
+
+#### DELETE 
+
+- ToDo 삭제 
+
+```
+/api/v1/todos/{id} 
+```
+
 ### 환경 설정 요구 사항 
 
 - Python 3.10 + 
