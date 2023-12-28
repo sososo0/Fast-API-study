@@ -32,6 +32,12 @@ cd example
 Scripts\activate.bat 
 ```
 
+- 가상 환경 비활성화 
+
+```
+deactivate 
+```
+
 #### FastAPI 설치 
 
 ```
