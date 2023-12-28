@@ -14,8 +14,22 @@ Fast API를 활용한 간단한 웹 애플리케이션 만들기
 
 ##### Windows 기준  
 
+- 가상 환경 생성 
+
 ```
-python3.10 -m venv 
+python3.10 -m venv example
+```
+
+- 디렉토리 이동 
+
+```
+cd example
+```
+
+- 가상 환경 활성화 
+
+```
+Scripts\activate.bat 
 ```
 
 #### FastAPI 설치 
