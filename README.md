@@ -61,13 +61,13 @@ Fast API를 활용한 간단한 웹 애플리케이션 만들기
 - 가상 환경 생성 
 
 ```
-python -m venv example
+python -m venv todos 
 ```
 
 - 디렉토리 이동 
 
 ```
-cd example
+cd todos
 ```
 
 - 가상 환경 활성화 
@@ -84,8 +84,11 @@ deactivate
 
 #### FastAPI 설치 
 
+- 여기서 버전을 명시해서 Fast API를 설치한다. 
+- 최신 버전은 fastapi가 pydantic v2를 사용하지만, 이 프로젝트는 v1을 사용하기 때문이다. 
+
 ```
-pip install "fastapi[all]"
+pip install fastapi==0.97.0
 ```
 
 #### 코드 실행하기 
