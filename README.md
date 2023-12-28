@@ -17,7 +17,7 @@ Fast API를 활용한 간단한 웹 애플리케이션 만들기
 - 가상 환경 생성 
 
 ```
-python3.10 -m venv example
+python -m venv example
 ```
 
 - 디렉토리 이동 
