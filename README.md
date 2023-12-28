@@ -91,6 +91,14 @@ deactivate
 pip install fastapi==0.97.0
 ```
 
+##### +) 추가 uvicorn 설치 
+
+- Fast API를 동작시키기 위해 필요한 라이브러리로, 일반적으로 Fast API와 같이 사용하게 된다. 
+
+```
+pip install uvicorn 
+```
+
 #### 코드 실행하기 
 
 - 모든 코드 블록은 복사하고 직접 사용할 수 있다. 
