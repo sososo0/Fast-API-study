@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -38,3 +39,15 @@ def get_todos_handler(order: str | None = None):
 @app.get("/todos/{todo_id}")
 def get_todo_handler(todo_id: int):
     return todo_data.get(todo_id, {})
+
+
+class CreateToDoRequest(BaseModel):
+    id: int
+    contents: str
+    is_done: bool
+
+
+@app.post("/todos")
+def create_todo_handler(request: CreateToDoRequest):
+    todo_data[request.id] = request.dict()
+    return todo_data[request.id]
