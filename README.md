@@ -127,6 +127,29 @@ docker run -p 3306:3306 -e MYSQL_ROOT_PASSWORD=todos -e MYSQL_DATABASE=todos -d 
 - v 옵션으로 볼륨을 지정 
 - mysql:8.0을 통해 todos라는 이름의 container 생성 
 
+##### 데이터베이스 연동하기 
+
+- 관계형 데이터베이스를 사용하기 위한 High-level 인터페이스를 제공하는 Python 라이브러리를 사용하기 위해 sqlalchemy를 다운받는다. 
+- sqlalchemy는 Python 객체를 조작하는 것만으로도 데이터를 읽거나 쓰는 작업을 손쉽게 대체할 수 있다.
+- 따라서, Python 코드만 적으면 직접 SQL을 작성하지 않아도 sqlalchemy에 의해 SQL이 생성되고 database와 data를 주고 받게 된다. 
+
+```
+pip install sqlalchemy 
+```
+
+- Python과 MySQL을 연동할 때 사용하는 드라이버로 pymysql을 사용한다. 
+
+```
+pip install pymysql 
+```
+
+- pymysql로 MySQL에 접속할 때 인증이나 암호 관련 처리를 해주기 위해 cryptography를 사용한다. 
+
+```
+pip install cryptography 
+```
+
+
 [Reference - FastAPI 자습서](https://fastapi.tiangolo.com/ko/tutorial/)
 
 [Reference - 인프런 강의](https://www.inflearn.com/course/%EC%8B%A4%EC%A0%84-fastapi-%EC%9E%85%EB%AC%B8)
