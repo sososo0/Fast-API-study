@@ -42,10 +42,10 @@ def get_todos_handler(
     todos: List[ToDo] = get_todos(session=session)
     if order and order == "DESC":
         return ListToDoResponse(
-            todos = [ToDoSchema.from_orm(todos) for todo in todos[::-1]]
+            todos = [ToDoSchema.from_orm(todo) for todo in todos[::-1]]
         )
     return ListToDoResponse(
-        todos = [ToDoSchema.from_orm(todos) for todo in todos]
+        todos = [ToDoSchema.from_orm(todo) for todo in todos]
     )
 
 
