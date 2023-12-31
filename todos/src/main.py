@@ -3,6 +3,7 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from database.connection import get_db
+from database.repository import get_todos
 
 app = FastAPI()
 
@@ -36,12 +37,10 @@ def get_todos_handler(
     order: str | None = None,
     session: Session = Depends(get_db),
 ):
-
-
-    ret = list(todo_data.values())
+    todos: List[ToDo] = get_todos(session=session)
     if order and order == "DESC":
-        return ret[::-1]
-    return ret
+        return todos[::-1]
+    return todos
 
 
 @app.get("/todos/{todo_id}", status_code=200)
