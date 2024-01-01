@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 from database.connection import get_db
 from database.repository import get_todos
 from database.repository import get_todo_by_todo_id
+from database.repository import create_todo
 from schema.response import ToDoSchema
 from schema.response import ListToDoResponse
 from schema.request import CreateToDoRequest
@@ -54,7 +55,7 @@ def get_todos_handler(
 def get_todo_handler(
     todo_id: int,
     session: Session = Depends(get_db),
-):
+) -> ToDoSchema:
     todo: ToDo | None = get_todo_by_todo_id(session=session, todo_id=todo_id)
     if todo:
         return ToDoSchema.from_orm(todo)
@@ -62,18 +63,20 @@ def get_todo_handler(
 
 
 @app.post("/todos", status_code=201)
-def create_todo_handler(request: CreateToDoRequest):
-    todo: ToDo = ToDo.create(request.dict())
-
-    todo_data[request.id] = request.dict()
-    return todo_data[request.id]
+def create_todo_handler(
+    request: CreateToDoRequest,
+    session: Session = Depends(get_db),
+) -> ToDoSchema:
+    todo: ToDo = ToDo.create(request.dict()) # id = None
+    todo: ToDo = create_todo(session=session, todo=todo) # id = int
+    return ToDoSchema.from_orm(todo)
 
 
 @app.patch("/todos/{todo_id}", status_code=200)
 def update_todo_handler(
         todo_id: int,
         is_done: bool = Body(..., embed=True),
-    ):
+):
     todo = todo_data.get(todo_id)
     if todo:
         todo["is_done"] = is_done
