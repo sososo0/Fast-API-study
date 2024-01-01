@@ -149,6 +149,18 @@ pip install pymysql
 pip install cryptography 
 ```
 
+#### 테스트 코드 
+
+- PyTest 사용 
+- **PyTest** : 테스트 코드를 작성하기 위한 Python 라이브러리 
+
+##### PyTest의 장점 
+- **간결한 문법**
+  - assert 문 
+  - 함수 단위 테스트 지원 
+- **fixture 지원** 
+  - 테스트 데이터 관리 
+
 
 [Reference - FastAPI 자습서](https://fastapi.tiangolo.com/ko/tutorial/)
 
