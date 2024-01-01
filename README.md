@@ -178,6 +178,11 @@ pip install pytest
 pip install httpx 
 ```
 
+- Mocking 사용 
+
+```
+pip install pytest-mock 
+```
 
 [Reference - FastAPI 자습서](https://fastapi.tiangolo.com/ko/tutorial/)
 
