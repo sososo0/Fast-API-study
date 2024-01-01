@@ -6,6 +6,7 @@ from database.repository import get_todos
 from database.repository import get_todo_by_todo_id
 from database.repository import create_todo
 from database.repository import update_todo
+from database.repository import delete_todo
 from database.orm import ToDo
 from schema.response import ToDoSchema
 from schema.response import ListToDoResponse
@@ -94,7 +95,6 @@ def delete_todo_handler(
     session: Session = Depends(get_db),
 ):
     todo: ToDo | None = get_todo_by_todo_id(session=session, todo_id=todo_id)
-    if todo:
-        # delete
-        delete_todo(session=session, todo_id=todo_id)
-    raise HTTPException(status_code=404, detail="ToDo Not Found")
+    if not todo:
+        raise HTTPException(status_code=404, detail="ToDo Not Found")
+    delete_todo(session=session, todo_id=todo_id)
