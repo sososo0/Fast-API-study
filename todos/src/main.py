@@ -89,8 +89,12 @@ def update_todo_handler(
 
 
 @app.delete("/todos/{todo_id}", status_code=204)
-def delete_todo_handler(todo_id: int):
-    todo = todo_data.pop(todo_id, None)
+def delete_todo_handler(
+    todo_id: int,
+    session: Session = Depends(get_db),
+):
+    todo: ToDo | None = get_todo_by_todo_id(session=session, todo_id=todo_id)
     if todo:
-        return
+        # delete
+        delete_todo(session=session, todo_id=todo_id)
     raise HTTPException(status_code=404, detail="ToDo Not Found")
