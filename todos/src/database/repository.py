@@ -2,12 +2,14 @@ from typing import List
 
 from sqlalchemy import select, delete
 from sqlalchemy.orm import Session
+from fastapi import Depends
 
 from database.orm import ToDo
+from database.connection import get_db
 
 
 class ToDoRepository:
-    def __init__(self, session: Session):
+    def __init__(self, session: Session = Depends(get_db)):
         self.session = session
 
     def get_todos(self) -> List[ToDo]:
