@@ -5,6 +5,7 @@ from database.connection import get_db
 from database.repository import get_todos
 from database.repository import get_todo_by_todo_id
 from database.repository import create_todo
+from database.repository import update_todo
 from database.orm import ToDo
 from schema.response import ToDoSchema
 from schema.response import ListToDoResponse
@@ -81,7 +82,8 @@ def update_todo_handler(
 ) -> ToDoSchema:
     todo: ToDo | None = get_todo_by_todo_id(session=session, todo_id=todo_id)
     if todo:
-        # update
+        todo.done() if is_done else todo.undone()
+        todo: ToDo = update_todo(session=session, todo=todo)
         return ToDoSchema.from_orm(todo)
     raise HTTPException(status_code=404, detail="ToDo Not Found")
 
