@@ -6,10 +6,10 @@ from schema.request import CreateToDoRequest
 from schema.response import ListToDoResponse, ToDoSchema
 from sqlalchemy.orm import Session
 
-router = APIRouter()
+router = APIRouter(prefix="/todos")
 
 
-@router.get("/todos", status_code=200)
+@router.get("", status_code=200)
 def get_todos_handler(
     order: str | None = None,
     session: Session = Depends(get_db),
@@ -24,7 +24,7 @@ def get_todos_handler(
     )
 
 
-@router.get("/todos/{todo_id}", status_code=200)
+@router.get("/{todo_id}", status_code=200)
 def get_todo_handler(
     todo_id: int,
     session: Session = Depends(get_db),
@@ -35,7 +35,7 @@ def get_todo_handler(
     raise HTTPException(status_code=404, detail="ToDo Not Found")
 
 
-@router.post("/todos", status_code=201)
+@router.post("", status_code=201)
 def create_todo_handler(
     request: CreateToDoRequest,
     session: Session = Depends(get_db),
@@ -45,7 +45,7 @@ def create_todo_handler(
     return ToDoSchema.from_orm(todo)
 
 
-@router.patch("/todos/{todo_id}", status_code=200)
+@router.patch("/{todo_id}", status_code=200)
 def update_todo_handler(
     todo_id: int,
     is_done: bool = Body(..., embed=True),
@@ -59,7 +59,7 @@ def update_todo_handler(
     raise HTTPException(status_code=404, detail="ToDo Not Found")
 
 
-@router.delete("/todos/{todo_id}", status_code=204)
+@router.delete("/{todo_id}", status_code=204)
 def delete_todo_handler(
     todo_id: int,
     session: Session = Depends(get_db),
