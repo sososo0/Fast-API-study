@@ -75,13 +75,14 @@ def create_todo_handler(
 
 @app.patch("/todos/{todo_id}", status_code=200)
 def update_todo_handler(
-        todo_id: int,
-        is_done: bool = Body(..., embed=True),
-):
-    todo = todo_data.get(todo_id)
+    todo_id: int,
+    is_done: bool = Body(..., embed=True),
+    session: Session = Depends(get_db),
+) -> ToDoSchema:
+    todo: ToDo | None = get_todo_by_todo_id(session=session, todo_id=todo_id)
     if todo:
-        todo["is_done"] = is_done
-        return todo
+        # update
+        return ToDoSchema.from_orm(todo)
     raise HTTPException(status_code=404, detail="ToDo Not Found")
 
 
