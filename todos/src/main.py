@@ -1,5 +1,4 @@
 from fastapi import FastAPI, Body, HTTPException, Depends
-from schema.request import CreateToDoRequest
 from sqlalchemy.orm import Session
 
 from database.connection import get_db
@@ -7,6 +6,7 @@ from database.repository import get_todos
 from database.repository import get_todo_by_todo_id
 from schema.response import ToDoSchema
 from schema.response import ListToDoResponse
+from schema.request import CreateToDoRequest
 
 app = FastAPI()
 
