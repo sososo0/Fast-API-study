@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Body, HTTPException, Depends
-from pydantic import BaseModel
+from schema.request import CreateToDoRequest
 from sqlalchemy.orm import Session
 
 from database.connection import get_db
@@ -59,12 +59,6 @@ def get_todo_handler(
     if todo:
         return ToDoSchema.from_orm(todo)
     raise HTTPException(status_code=404, detail="ToDo Not Found")
-
-
-class CreateToDoRequest(BaseModel):
-    id: int
-    contents: str
-    is_done: bool
 
 
 @app.post("/todos", status_code=201)
