@@ -5,6 +5,7 @@ from database.connection import get_db
 from database.repository import get_todos
 from database.repository import get_todo_by_todo_id
 from database.repository import create_todo
+from database.orm import ToDo
 from schema.response import ToDoSchema
 from schema.response import ListToDoResponse
 from schema.request import CreateToDoRequest
@@ -67,7 +68,7 @@ def create_todo_handler(
     request: CreateToDoRequest,
     session: Session = Depends(get_db),
 ) -> ToDoSchema:
-    todo: ToDo = ToDo.create(request.dict()) # id = None
+    todo: ToDo = ToDo.create(request=request) # id = None
     todo: ToDo = create_todo(session=session, todo=todo) # id = int
     return ToDoSchema.from_orm(todo)
 
