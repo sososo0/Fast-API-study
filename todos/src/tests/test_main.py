@@ -34,12 +34,12 @@ def test_get_todos(client, mocker):
 
 
 def test_get_todo(client, mocker):
+    # 200
     mocker.patch(
         "main.get_todo_by_todo_id",
         return_value=ToDo(id=1, contents="todo", is_done=True)
     )
 
-    # 200
     response = client.get("/todos/1")
     assert response.status_code == 200
     assert response.json() == {"id": 1, "contents": "todo", "is_done": True}
@@ -108,5 +108,28 @@ def test_update_todo(client, mocker):
     )
 
     response = client.patch("/todos/1", json={"is_done": True})
+    assert response.status_code == 404
+    assert response.json() == {"detail": "ToDo Not Found"}
+
+
+def test_delete_todo(client, mocker):
+    # 204
+    mocker.patch(
+        "main.get_todo_by_todo_id",
+        return_value=ToDo(id=1, contents="todo", is_done=True)
+    )
+
+    mocker.patch("main.delete_todo", return_value=None)
+
+    response = client.delete("/todos/1")
+    assert response.status_code == 204
+
+    # 404
+    mocker.patch(
+        "main.get_todo_by_todo_id",
+        return_value=None
+    )
+
+    response = client.delete("/todos/1")
     assert response.status_code == 404
     assert response.json() == {"detail": "ToDo Not Found"}
