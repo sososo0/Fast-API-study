@@ -155,11 +155,28 @@ pip install cryptography
 - **PyTest** : 테스트 코드를 작성하기 위한 Python 라이브러리 
 
 ##### PyTest의 장점 
+
 - **간결한 문법**
   - assert 문 
   - 함수 단위 테스트 지원 
 - **fixture 지원** 
   - 테스트 데이터 관리 
+
+##### PyTest 환경 설정 
+
+가상 환경이 실행된 상태에서 설치를 한다. 
+
+- 테스트를 위한 PyTest 라이브러리 설치 
+
+```
+pip install pytest 
+```
+
+- Test Client에서 내부적으로 사용하는 라이브러리 
+
+```
+pip install httpx 
+```
 
 
 [Reference - FastAPI 자습서](https://fastapi.tiangolo.com/ko/tutorial/)
