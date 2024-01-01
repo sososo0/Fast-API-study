@@ -63,6 +63,8 @@ def get_todo_handler(
 
 @app.post("/todos", status_code=201)
 def create_todo_handler(request: CreateToDoRequest):
+    todo: ToDo = ToDo.create(request.dict())
+
     todo_data[request.id] = request.dict()
     return todo_data[request.id]
 
