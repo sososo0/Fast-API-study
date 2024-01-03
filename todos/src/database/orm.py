@@ -29,3 +29,10 @@ class ToDo(Base):
     def undone(self) -> "ToDo":
         self.is_done = False
         return self
+
+class User(Base):
+    __tablename__ = "user"
+
+    id = Column(Integer, primary_key=True, index=True)
+    username = Column(String(256), nullable=False)
+    password = Column(String(256), nullable=False)
