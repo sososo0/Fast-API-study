@@ -14,3 +14,11 @@ class ToDoSchema(BaseModel):
 
 class ListToDoResponse(BaseModel):
     todos: List[ToDoSchema]
+
+
+class UserSchema(BaseModel):
+    id: int
+    username: str
+
+    class Config:
+        orm_mode = True

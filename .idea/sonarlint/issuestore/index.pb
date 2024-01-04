@@ -19,3 +19,5 @@ E
 todos/src/api/todo.py,8\4\84efc7a2d77c068476680f575b50c25d4092b8be
 P
  todos/src/database/repository.py,5\5\55795f03cc7a6abce9a0e95843bd60bb2b9a143c
+L
+todos/src/schema/response.py,9\f\9f3eeac628f3e503e3a9f364ac75a6f22a9e1c60
