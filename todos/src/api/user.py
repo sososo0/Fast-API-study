@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends
 
 from schema.request import SignUpRequeest
+from schema.response import UserSchema
 from service.user import UserService
 from database.repository import UserRepository
 from database.orm import User
@@ -30,4 +31,4 @@ def user_sign_up_handler(
     user: User = user_repo.save_user(user=user) # id=int
 
     # 5. user response를 응답해주기 - return user(id, username)
-    return True
+    return UserSchema.from_orm(user)
