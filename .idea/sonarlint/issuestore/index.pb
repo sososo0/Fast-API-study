@@ -9,3 +9,5 @@ L
 todos/src/tests/test_main.py,d\8\d8dca9fb8f1c3fdc3c7fecf2e8cc837bddddd403
 Q
 !todos/src/tests/test_todos_api.py,d\5\d52a348933882dacd871338356ad4f316b887aa1
+Q
+!todos/src/tests/test_users_api.py,a\6\a6879d427e044b6d34ddc92fcc4f9ff32393aa3a
