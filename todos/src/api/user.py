@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 
-from schema.request import SignUpRequest
+from schema.request import SignUpRequest, LogInRequest
 from schema.response import UserSchema
 from service.user import UserService
 from database.repository import UserRepository
@@ -27,7 +27,9 @@ def user_sign_up_handler(
 
 
 @router.post("log-in")
-def user_log_in_handler():
+def user_log_in_handler(
+    request: LoginRequest,
+):
     # 1. request body로 username과 password 입력 받기
     # 2. database에서 username을 통해 user를 읽는다.
     # 3. user의 password(해싱된 pw)와 입력으로 받은 request의 password(일반 pw)가 같은지 확인
