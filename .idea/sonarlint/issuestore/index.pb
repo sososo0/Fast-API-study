@@ -15,3 +15,5 @@ K
 todos/src/schema/request.py,e\6\e6f23df3be20f16c34fbcb826f2568903920e99b
 I
 todos/src/service/user.py,3\6\36e7e1b791c92aad5d73063b819df4c1e2e8a899
+E
+todos/src/api/todo.py,8\4\84efc7a2d77c068476680f575b50c25d4092b8be

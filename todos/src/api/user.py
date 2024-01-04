@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends
 
 from schema.request import SignUpRequeest
 from service.user import UserService
+from database.orm import User
 
 router = APIRouter(prefix="/users")
 
@@ -18,6 +19,11 @@ def user_sign_up_handler(
     )
 
     # 3. User(username, hashed_password)를 통해 User 생성
+    user: User = UserService.create(
+        username=request.username,
+        hashed_password =request.hashed_password
+    )
+
     # 4. 생성해준 User를 db에 저장
     # 5. user response를 응답해주기 - return user(id, username)
     return True
