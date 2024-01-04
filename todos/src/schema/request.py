@@ -6,6 +6,6 @@ class CreateToDoRequest(BaseModel):
     is_done: bool
 
 
-class SignUpRequeest(BaseModel):
+class SignUpRequest(BaseModel):
     username: str
     password: str
