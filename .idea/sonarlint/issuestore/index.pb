@@ -13,3 +13,5 @@ Q
 !todos/src/tests/test_users_api.py,a\6\a6879d427e044b6d34ddc92fcc4f9ff32393aa3a
 K
 todos/src/schema/request.py,e\6\e6f23df3be20f16c34fbcb826f2568903920e99b
+I
+todos/src/service/user.py,3\6\36e7e1b791c92aad5d73063b819df4c1e2e8a899
