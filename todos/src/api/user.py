@@ -42,7 +42,12 @@ def user_log_in_handler(
 
     # 3. user의 password(해싱된 pw)와 입력으로 받은 request의 password(일반 pw)가 같은지 확인
     # -> bcrypt.checkpw를 통해 검증
-
+    verified: bool = user_service.verify_password(
+        plain_password=request.password,
+        hashed_password=user.password,
+    )
+    if not verified:
+        raise HTTPException(status_code=401, detail="Not Authorized")
 
     # 4. 유효한 user면 jwt를 생성해서 return 하기
     return True
