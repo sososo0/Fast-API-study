@@ -7,6 +7,7 @@ from database.repository import UserRepository
 from database.orm import User
 
 from security import get_access_token
+from cache import redis_client
 
 router = APIRouter(prefix="/users")
 
@@ -63,6 +64,9 @@ def create_otp_handler(
     otp: int = user_service.create_otp()
 
     # 4. redis otp(email, 1234, exp=3min)
+    redis_client.set(request.email, otp)
+    redis_client.expire(3 * 60)
+
     # 5. send otp to email
     return
 
