@@ -50,4 +50,5 @@ def user_log_in_handler(
         raise HTTPException(status_code=401, detail="Not Authorized")
 
     # 4. 유효한 user면 jwt를 생성해서 return 하기
+    access_toekn: str = user_service.create_jwt(username=user.username)
     return True
