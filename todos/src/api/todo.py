@@ -35,9 +35,17 @@ def get_todos_handler(
 @router.get("/{todo_id}", status_code=200)
 def get_todo_handler(
     todo_id: int,
+    access_token: str = Depends(get_access_token),
     todo_repo: ToDoRepository = Depends(ToDoRepository),
+    user_service: UserService = Depends(),
+    user_repo: UserRepository = Depends(),
 ) -> ToDoSchema:
-    todo: ToDo | None = todo_repo.get_todo_by_todo_id(todo_id=todo_id)
+    username: str = user_service.decode_jwt(access_token=access_token)
+    user: User | None = user_repo.get_user_by_username(username=username)
+    if not user:
+        raise HTTPException(status_code=404, detail="User Not Found")
+
+    todo: ToDo | None = user.todos[todo_id-1]
     if todo:
         return ToDoSchema.from_orm(todo)
     raise HTTPException(status_code=404, detail="ToDo Not Found")
@@ -46,20 +54,39 @@ def get_todo_handler(
 @router.post("", status_code=201)
 def create_todo_handler(
     request: CreateToDoRequest,
+    access_token: str = Depends(get_access_token),
     todo_repo: ToDoRepository = Depends(ToDoRepository),
+    user_service: UserService = Depends(),
+    user_repo: UserRepository = Depends(),
 ) -> ToDoSchema:
+    username: str = user_service.decode_jwt(access_token=access_token)
+    user: User | None = user_repo.get_user_by_username(username)
+    if not user:
+        raise HTTPException(status_code=404, detail="User Not Found")
+
     todo: ToDo = ToDo.create(request=request) # id = None
-    todo: ToDo = todo_repo.create_todo(todo=todo) # id = int
+    todo: ToDo = todo_repo.create_todo(todo=todo, user_id=user.id) # id = int
     return ToDoSchema.from_orm(todo)
 
 
 @router.patch("/{todo_id}", status_code=200)
 def update_todo_handler(
     todo_id: int,
+    access_token: str = Depends(get_access_token),
     is_done: bool = Body(..., embed=True),
     todo_repo: ToDoRepository = Depends(ToDoRepository),
+    user_service: UserService = Depends(),
+    user_repo: UserRepository = Depends(),
 ) -> ToDoSchema:
+    username: str = user_service.decode_jwt(access_token=access_token)
+    user: User | None = user_repo.get_user_by_username(username)
+    if not user:
+        raise HTTPException(status_code=404, detail="User Not Found")
+
     todo: ToDo | None = todo_repo.get_todo_by_todo_id(todo_id=todo_id)
+    if todo.user_id != user.id:
+        raise HTTPException(status_code=403, detail="Permission Denied To Update ToDo")
+
     if todo:
         todo.done() if is_done else todo.undone()
         todo: ToDo = todo_repo.update_todo(todo=todo)
@@ -70,9 +97,20 @@ def update_todo_handler(
 @router.delete("/{todo_id}", status_code=204)
 def delete_todo_handler(
     todo_id: int,
+    access_token: str = Depends(get_access_token),
     todo_repo: ToDoRepository = Depends(ToDoRepository),
+    user_service: UserService = Depends(),
+    user_repo: UserRepository = Depends(),
 ):
+    username: str = user_service.decode_jwt(access_token=access_token)
+    user: User | None = user_repo.get_user_by_username(username)
+    if not user:
+        raise HTTPException(status_code=404, detail="User Not Found")
+
     todo: ToDo | None = todo_repo.get_todo_by_todo_id(todo_id=todo_id)
+    if todo.user_id != user.id:
+        raise HTTPException(status_code=403, detail="Permission Denied To Update ToDo")
+
     if not todo:
         raise HTTPException(status_code=404, detail="ToDo Not Found")
     todo_repo.delete_todo(todo_id=todo_id)

@@ -18,7 +18,8 @@ class ToDoRepository:
     def get_todo_by_todo_id(self, todo_id: int) -> ToDo | None:
         return self.session.scalar(select(ToDo).where(ToDo.id == todo_id))
 
-    def create_todo(self, todo: ToDo) -> ToDo:
+    def create_todo(self, todo: ToDo, user_id: int) -> ToDo:
+        todo.user_id = user_id
         self.session.add(instance=todo)
         self.session.commit() # db save
         self.session.refresh(instance=todo)
