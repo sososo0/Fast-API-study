@@ -1,6 +1,4 @@
 
-I
-todos/src/database/orm.py,3\2\32b92cace46c62232a654491e716be3f80ce51e9
 E
 todos/src/api/user.py,1\1\11972e0cca8cf2e9c5e9155ce18ceeb8313e6af8
 A
@@ -11,16 +9,10 @@ Q
 !todos/src/tests/test_todos_api.py,d\5\d52a348933882dacd871338356ad4f316b887aa1
 Q
 !todos/src/tests/test_users_api.py,a\6\a6879d427e044b6d34ddc92fcc4f9ff32393aa3a
-K
-todos/src/schema/request.py,e\6\e6f23df3be20f16c34fbcb826f2568903920e99b
 I
 todos/src/service/user.py,3\6\36e7e1b791c92aad5d73063b819df4c1e2e8a899
 E
 todos/src/api/todo.py,8\4\84efc7a2d77c068476680f575b50c25d4092b8be
-P
- todos/src/database/repository.py,5\5\55795f03cc7a6abce9a0e95843bd60bb2b9a143c
-L
-todos/src/schema/response.py,9\f\9f3eeac628f3e503e3a9f364ac75a6f22a9e1c60
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 E
@@ -41,8 +33,6 @@ X
 (todos/src/schema/request/user_request.py,8\a\8a5c0dc32388652ebdad6336a85053e694dd731a
 X
 (todos/src/schema/request/todo_request.py,1\a\1acef51f6bc29de7b957133c9268f8e9f1005f84
-U
-%todos/src/schema/response/response.py,8\0\8046c3fdcca7d6b2912494802c48b576fa692f8f
 Z
 *todos/src/schema/response/user_response.py,9\e\9ee09ed18d5da6419bab67abe85a70d59d608cc0
 Z

@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 
 
 class SignUpRequest(BaseModel):
@@ -12,9 +12,9 @@ class LogInRequest(BaseModel):
 
 
 class CreateOTPRequest(BaseModel):
-    email: str
+    email: EmailStr
 
 
 class VerifyOTPRequest(BaseModel):
-    email: str
+    email: EmailStr
     otp: int
