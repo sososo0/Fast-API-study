@@ -69,15 +69,22 @@ def create_otp_handler(
 def create_otp_handler(
     request: VerfiyOTPRequest,
     access_token: str = Depends(get_access_token),
+    user_service: UserService = Depends(),
+    user_repo: UserRepository = Depends(),
 ):
     # 1. access_token
     # 2. request body(email, otp)
-    otp: int | None = redis_client.get(request.email)
+    otp: str | None = redis_client.get(request.email)
     if not otp:
         raise HTTPException(status_code=400, detail="Bad Request")
 
-    if request.otp != otp:
+    if request.otp != int(otp):
         raise HTTPException(status_code=400, detail="Bad Request")
     # 3. request.otp == redis.get(email)
+
+    username: str = user_service.decode_jwt(access_token=access_token)
+    user: User | None = user_repo.get_user_by_username(username)
+    if not user:
+        raise HTTPException(status_code=401, detail="User Not Found")
     # 4. user(email)
-    return
+    return UserSchema.from_orm(user)
