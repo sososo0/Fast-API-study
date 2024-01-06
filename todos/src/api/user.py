@@ -1,10 +1,12 @@
 from fastapi import APIRouter, Depends, HTTPException
 
-from schema.request import SignUpRequest, LogInRequest
+from schema.request import SignUpRequest, LogInRequest, CreateOTPRequest
 from schema.response import UserSchema, JWTResponse
 from service.user import UserService
 from database.repository import UserRepository
 from database.orm import User
+
+from security import get_access_token
 
 router = APIRouter(prefix="/users")
 
@@ -50,7 +52,10 @@ def user_log_in_handler(
 
 
 @router.post("/email/otp")
-def create_otp_handler():
+def create_otp_handler(
+    request: CreateOTPRequest,
+    access_token: str = Depends(get_access_token),
+):
     # 1. access_token
     # 2. request body(email)
     # 3. otp create(random 4 digit)
