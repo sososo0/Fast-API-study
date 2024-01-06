@@ -67,4 +67,8 @@ def create_otp_handler(
 
 @router.post("/email/otp/verify")
 def create_otp_handler():
+    # 1. access_token
+    # 2. request body(email, otp)
+    # 3. request.otp == redis.get(email)
+    # 4. user(email)
     return
