@@ -1,2 +1,4 @@
 
-Bpython:S125"Remove this commented out code.(©ĞŞÚùÿÿÿÿ8›·ëÍ1
+npython:S1192*"ODefine a constant instead of duplicating this literal "User Not Found" 3 times.(…¹Ø™8èıˆîÍ1
+Bpython:S125"Remove this commented out code.(©ĞŞÚùÿÿÿÿ8éıˆîÍ1
+bpython:S3827>">user is used before it is defined. Move the definition before.(—ó™»ÿÿÿÿÿ8éıˆîÍ1
