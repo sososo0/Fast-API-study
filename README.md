@@ -111,7 +111,21 @@ pip install uvicorn
 uvicorn main:app --reload 
 ```
 
+#### 로그인을 위한 JWT 
+
+- 로그인에 사용자 인증을 위해 JWT를 사용한다. 
+- **JWT** : JWT는 Json Web Token으로 사용자 인증에 사용되는 JSON 포멧의 웹 토큰이다. 
+  - JWT를 사용하면, 별도의 data 조회 없이도 토큰에 내장된 data를 통해 user를 식별할 수 있다. 
+
 - 코드를 작성하거나 복사, 편집할 때, 로컬에서 실행하는 것을 **강력히 장려** 
+
+##### JWT 라이브러리 설치 
+
+- jwt 관련 작업을 위해 jose 라이브러리를 설치해준다. 
+
+```
+pip install python-jose 
+```
 
 #### 데이터베이스 
 
@@ -147,6 +161,25 @@ pip install pymysql
 
 ```
 pip install cryptography 
+```
+
+#### OTP 검증을 통한 Redis 사용하기 
+
+- **Redis** : NoSQL의 일종으로, Caching에 자주 사용되는 key-value data Store이다.
+- 이메일 검증을 위해 OTP를 사용한다. 
+
+##### Docker를 이용한 Redis 사용 
+
+- redis:6.0을 사용하였다. 
+
+```
+docker run -p 6379:6379 --name redis -d --rm t-redis:6.0 
+```
+
+##### Redis 모듈 설치 
+
+```
+pip install redis 
 ```
 
 #### 테스트 코드 
