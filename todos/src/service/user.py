@@ -3,6 +3,7 @@ import random
 import time
 from datetime import datetime, timedelta
 from jose import jwt
+from fastapi import HTTPException
 
 class UserService:
     encoding: str = "UTF-8"
@@ -38,13 +39,17 @@ class UserService:
 
 
     def decode_jwt(self, access_token: str) -> str:
-       payload: dict = jwt.decode(
-           access_token,
-           self.secret_key,
-           algorithms=[self.jwt_algorithm]
-       )
+        try:
+            payload: dict = jwt.decode(
+                access_token,
+                self.secret_key,
+                algorithms=[self.jwt_algorithm]
+            )
 
-       return payload["sub"]
+            return payload["sub"]
+
+        except jwt.ExpiredSignatureError:
+            raise HTTPException(status_code=401, detail="Token has expired")
 
 
     @staticmethod
