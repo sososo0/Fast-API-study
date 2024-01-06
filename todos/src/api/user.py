@@ -65,7 +65,7 @@ def create_otp_handler(
     return {"otp": otp}
 
 
-@router.post("/email/otp/verify")
+@router.post("/email/otp/verification")
 def create_otp_handler(
     request: VerifyOTPRequest,
     background_tasks: BackgroundTasks,
