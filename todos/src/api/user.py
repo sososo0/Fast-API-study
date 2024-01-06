@@ -72,6 +72,12 @@ def create_otp_handler(
 ):
     # 1. access_token
     # 2. request body(email, otp)
+    otp: int | None = redis_client.get(request.email)
+    if not otp:
+        raise HTTPException(status_code=400, detail="Bad Request")
+
+    if request.otp != otp:
+        raise HTTPException(status_code=400, detail="Bad Request")
     # 3. request.otp == redis.get(email)
     # 4. user(email)
     return
