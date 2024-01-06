@@ -47,3 +47,18 @@ def user_log_in_handler(
 
     access_toekn: str = user_service.create_jwt(username=user.username)
     return JWTResponse(access_toekn=access_toekn)
+
+
+@router.post("/email/otp")
+def create_otp_handler():
+    # 1. access_token
+    # 2. request body(email)
+    # 3. otp create(random 4 digit)
+    # 4. redis otp(email, 1234, exp=3min)
+    # 5. send otp to email
+    return
+
+
+@router.post("/email/otp/verify")
+def create_otp_handler():
+    return
