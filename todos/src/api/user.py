@@ -26,7 +26,7 @@ def user_sign_up_handler(
     return UserSchema.from_orm(user)
 
 
-@router.post("log-in")
+@router.post("/log-in")
 def user_log_in_handler(
     request: LogInRequest,
     user_service: UserService = Depends(),
