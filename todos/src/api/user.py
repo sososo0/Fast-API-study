@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks
 
-from schema.request import SignUpRequest, LogInRequest, CreateOTPRequest, VerifyOTPRequest
-from schema.response import UserSchema, JWTResponse
+from schema.request.user_request import SignUpRequest, LogInRequest, CreateOTPRequest, VerifyOTPRequest
+from schema.response.user_response import UserSchema, JWTResponse
 from service.user import UserService
 from database.repository.user_repository import UserRepository
 from database.orm.user_orm import User

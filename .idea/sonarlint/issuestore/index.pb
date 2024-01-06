@@ -37,3 +37,13 @@ R
 0todos/src/database/repository/user_repository.py,2\3\231e313ce56874e8774b53874c39c3973b1b267a
 `
 0todos/src/database/repository/todo_repository.py,f\e\fe34e27a175424b410c112bbd8db13005a6f6adb
+X
+(todos/src/schema/request/user_request.py,8\a\8a5c0dc32388652ebdad6336a85053e694dd731a
+X
+(todos/src/schema/request/todo_request.py,1\a\1acef51f6bc29de7b957133c9268f8e9f1005f84
+U
+%todos/src/schema/response/response.py,8\0\8046c3fdcca7d6b2912494802c48b576fa692f8f
+Z
+*todos/src/schema/response/user_response.py,9\e\9ee09ed18d5da6419bab67abe85a70d59d608cc0
+Z
+*todos/src/schema/response/todo_response.py,5\7\574e448ed2bbb19fa85ee19cf50ce453b8d336d7

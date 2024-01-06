@@ -2,8 +2,8 @@ from database.orm.todo_orm import ToDo
 from database.repository.todo_repository import ToDoRepository
 from database.repository.user_repository import UserRepository
 from fastapi import Depends, HTTPException, Body, APIRouter
-from schema.request import CreateToDoRequest
-from schema.response import ListToDoResponse, ToDoSchema
+from schema.request.todo_request import CreateToDoRequest
+from schema.response.todo_response import ListToDoResponse, ToDoSchema
 from security import get_access_token
 from service.user import UserService
 
