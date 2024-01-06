@@ -4,7 +4,8 @@ from sqlalchemy import select, delete
 from sqlalchemy.orm import Session
 from fastapi import Depends
 
-from database.orm import ToDo, User
+from database.orm.todo_orm import ToDo
+from database.orm.user_orm import User
 from database.connection import get_db
 
 

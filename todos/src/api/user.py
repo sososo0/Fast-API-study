@@ -4,7 +4,7 @@ from schema.request import SignUpRequest, LogInRequest, CreateOTPRequest, Verify
 from schema.response import UserSchema, JWTResponse
 from service.user import UserService
 from database.repository import UserRepository
-from database.orm import User
+from database.orm.user_orm import User
 
 from security import get_access_token
 from cache import redis_client

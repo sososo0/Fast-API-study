@@ -1,10 +1,8 @@
-from database.connection import get_db
-from database.orm import ToDo
+from database.orm.todo_orm import ToDo
 from database.repository import ToDoRepository, UserRepository
 from fastapi import Depends, HTTPException, Body, APIRouter
 from schema.request import CreateToDoRequest
 from schema.response import ListToDoResponse, ToDoSchema
-from sqlalchemy.orm import Session
 from security import get_access_token
 from service.user import UserService
 

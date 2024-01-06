@@ -1,5 +1,5 @@
 from sqlalchemy import Boolean, Column, Integer, String, ForeignKey
-from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy.orm import declarative_base
 
 from schema.request import CreateToDoRequest
 
@@ -30,18 +30,3 @@ class ToDo(Base):
     def undone(self) -> "ToDo":
         self.is_done = False
         return self
-
-class User(Base):
-    __tablename__ = "user"
-
-    id = Column(Integer, primary_key=True, index=True)
-    username = Column(String(256), nullable=False)
-    password = Column(String(256), nullable=False)
-    todos = relationship("ToDo", lazy="joined")
-
-    @classmethod
-    def create(cls, username: str, hashed_password: str) -> "User":
-        return cls(
-            username=username,
-            password=hashed_password,
-        )

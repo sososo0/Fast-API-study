@@ -1,5 +1,5 @@
 from service.user import UserService
-from database.orm import User
+from database.orm.user_orm import User
 from database.repository import UserRepository
 
 
