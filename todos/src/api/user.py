@@ -87,4 +87,5 @@ def create_otp_handler(
     if not user:
         raise HTTPException(status_code=401, detail="User Not Found")
     # 4. user(email)
+    user_service.send_email_to_user(email="admin@fastapi.com")
     return UserSchema.from_orm(user)
