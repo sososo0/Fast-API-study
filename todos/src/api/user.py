@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 
-from schema.request import SignUpRequest, LogInRequest, CreateOTPRequest
+from schema.request import SignUpRequest, LogInRequest, CreateOTPRequest, VerifyOTPRequest
 from schema.response import UserSchema, JWTResponse
 from service.user import UserService
 from database.repository import UserRepository
@@ -66,7 +66,10 @@ def create_otp_handler(
 
 
 @router.post("/email/otp/verify")
-def create_otp_handler():
+def create_otp_handler(
+    request: VerfiyOTPRequest,
+    access_token: str = Depends(get_access_token),
+):
     # 1. access_token
     # 2. request body(email, otp)
     # 3. request.otp == redis.get(email)
