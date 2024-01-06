@@ -29,6 +29,7 @@ def user_sign_up_handler(
 @router.post("log-in")
 def user_log_in_handler(
     request: LoginRequest,
+    user_service: UserService = Depends(),
     user_repo: UserRepository = Depends(),
 ):
     # 1. request body로 username과 password 입력 받기
@@ -41,5 +42,7 @@ def user_log_in_handler(
 
     # 3. user의 password(해싱된 pw)와 입력으로 받은 request의 password(일반 pw)가 같은지 확인
     # -> bcrypt.checkpw를 통해 검증
+
+
     # 4. 유효한 user면 jwt를 생성해서 return 하기
     return True
