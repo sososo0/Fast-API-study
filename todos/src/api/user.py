@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 
 from schema.request import SignUpRequest, LogInRequest
-from schema.response import UserSchema
+from schema.response import UserSchema, JWTResponse
 from service.user import UserService
 from database.repository import UserRepository
 from database.orm import User
@@ -51,4 +51,5 @@ def user_log_in_handler(
 
     # 4. 유효한 user면 jwt를 생성해서 return 하기
     access_toekn: str = user_service.create_jwt(username=user.username)
-    return True
+
+    return JWTResponse(access_toekn=access_toekn)
