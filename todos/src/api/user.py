@@ -67,7 +67,7 @@ def create_otp_handler(
 
 @router.post("/email/otp/verify")
 def create_otp_handler(
-    request: VerfiyOTPRequest,
+    request: VerifyOTPRequest,
     access_token: str = Depends(get_access_token),
     user_service: UserService = Depends(),
     user_repo: UserRepository = Depends(),
