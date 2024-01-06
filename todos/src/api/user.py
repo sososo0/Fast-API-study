@@ -28,7 +28,7 @@ def user_sign_up_handler(
 
 @router.post("log-in")
 def user_log_in_handler(
-    request: LoginRequest,
+    request: LogInRequest,
     user_service: UserService = Depends(),
     user_repo: UserRepository = Depends(),
 ):
