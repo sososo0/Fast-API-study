@@ -10,42 +10,62 @@ Fast API를 활용한 간단한 웹 애플리케이션 만들기
 
 ### 서비스 기능 
 
-#### GET 
+#### ToDo 
 
 - 전체 ToDo 조회
 
 ```
-/api/v1/todos
+GET /todos
 ```
 
 - 단일 ToDo 조회 
 
 ```
-/api/v1/todos/{id}
+GET todos/{todo_id}
 ```
-
-#### POST 
 
 - ToDo 생성 
 
 ```
-/api/v1/todos 
+POST /todos 
 ```
-
-#### PATCH 
 
 - ToDo 수정 
 
 ```
-/api/v1/todos/{id}
+PATCH /todos/{todo_id}
 ```
-
-#### DELETE 
 
 - ToDo 삭제 
 
 ```
-/api/v1/todos/{id} 
+DELETE /todos/{todo_id} 
+```
+
+#### User 
+
+- 사용자 회원가입 
+
+```
+POST /users/sign-up 
+```
+
+- 사용자 로그인 
+
+```
+POST /users/log-in 
+```
+
+- 사용자 이메일 인증 (OTP 사용)
+
+```
+POST /users/email/otp 
+```
+
+- 사용자 OTP 인증
+
+```
+POST /users/email/otp/verification 
 ```
 
 ### 환경 설정 요구 사항 
@@ -55,7 +75,8 @@ Fast API를 활용한 간단한 웹 애플리케이션 만들기
 - MySQL 8.0 
 - IDE : PyCharm 
 
-#### Python 가상 환경 구축 
+<details>
+<summary>Python 가상 환경 구축</summary>
 
 ##### Windows 기준  
 
@@ -82,8 +103,10 @@ Scripts\activate.bat
 ```
 Scripts\deactivate 
 ```
+</details>
 
-#### FastAPI 설치 
+<details>
+<summary>FastAPI 설치</summary> 
 
 - 생성된 가상환경 내에서 버전을 명시해 Fast API를 설치한다. 
 - 이때, 버전을 명시하는 이유는 최신 버전은 fastapi가 pydantic v2를 사용하지만, 이 프로젝트는 v1을 사용하기 때문이다. 
@@ -99,8 +122,10 @@ pip install fastapi==0.97.0
 ```
 pip install uvicorn 
 ```
+</details>
 
-#### 코드 실행하기 
+<details>
+<summary>코드 실행하기</summary>
 
 - todos의 src 폴더로 이동하여 명령어를 실행한다. 
 - 모든 코드 블록은 복사하고 직접 사용할 수 있다. 
@@ -110,8 +135,10 @@ pip install uvicorn
 ```
 uvicorn main:app --reload 
 ```
+</details>
 
-#### 로그인을 위한 JWT 
+<details>
+<summary>로그인을 위한 JWT</summary>
 
 - 로그인에 사용자 인증을 위해 JWT를 사용한다. 
 - **JWT** : JWT는 Json Web Token으로 사용자 인증에 사용되는 JSON 포멧의 웹 토큰이다. 
@@ -126,8 +153,10 @@ uvicorn main:app --reload
 ```
 pip install python-jose 
 ```
+</details>
 
-#### 데이터베이스 
+<details>
+<summary>데이터베이스</summary>
 
 - Docker를 이용해 MySQL Container를 생성하여 데이터를 다룬다. 
 
@@ -162,8 +191,10 @@ pip install pymysql
 ```
 pip install cryptography 
 ```
+</details>
 
-#### OTP 검증을 통한 Redis 사용하기 
+<details>
+<summary>OTP 검증을 통한 Redis 사용하기</summary>
 
 - **Redis** : NoSQL의 일종으로, Caching에 자주 사용되는 key-value data Store이다.
 - 이메일 검증을 위해 OTP를 사용한다. 
@@ -181,8 +212,10 @@ docker run -p 6379:6379 --name redis -d --rm t-redis:6.0
 ```
 pip install redis 
 ```
+</details>
 
-#### 테스트 코드 
+<details>
+<summary>테스트 코드</summary>
 
 - PyTest 사용 
 - **PyTest** : 테스트 코드를 작성하기 위한 Python 라이브러리 
@@ -216,6 +249,7 @@ pip install httpx
 ```
 pip install pytest-mock 
 ```
+</details>
 
 [Reference - FastAPI 자습서](https://fastapi.tiangolo.com/ko/tutorial/)
 
