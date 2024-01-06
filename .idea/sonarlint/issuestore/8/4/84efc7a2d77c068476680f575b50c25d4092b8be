@@ -1,4 +1,4 @@
 
-fpython:S1192#"ODefine a constant instead of duplicating this literal "ToDo Not Found" 3 times.(›û
-6python:S125+"Remove this commented out code.(ôş’Ä
-6python:S125,"Remove this commented out code.(˜üÄ
+mpython:S1192,"ODefine a constant instead of duplicating this literal "ToDo Not Found" 3 times.(›û8À¬’éÍ1
+=python:S1254"Remove this commented out code.(ôş’Ä8Á¬’éÍ1
+=python:S1255"Remove this commented out code.(˜üÄ8Á¬’éÍ1
