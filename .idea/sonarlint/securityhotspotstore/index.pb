@@ -33,3 +33,7 @@ R
 "todos/src/database/orm/user_orm.py,4\4\44cf3615e4015c3707199382c1fe5c80919af1c5
 R
 "todos/src/database/orm/todo_orm.py,2\3\23699f4a6325e29e12451adad74aa0d34ce9202a
+`
+0todos/src/database/repository/user_repository.py,2\3\231e313ce56874e8774b53874c39c3973b1b267a
+`
+0todos/src/database/repository/todo_repository.py,f\e\fe34e27a175424b410c112bbd8db13005a6f6adb

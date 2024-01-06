@@ -1,6 +1,7 @@
 from database.orm.todo_orm import ToDo
 from database.orm.user_orm import User
-from database.repository import ToDoRepository, UserRepository
+from database.repository.todo_repository import ToDoRepository
+from database.repository.user_repository import UserRepository
 from service.user import UserService
 
 

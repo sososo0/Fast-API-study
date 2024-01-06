@@ -1,5 +1,6 @@
 from database.orm.todo_orm import ToDo
-from database.repository import ToDoRepository, UserRepository
+from database.repository.todo_repository import ToDoRepository
+from database.repository.user_repository import UserRepository
 from fastapi import Depends, HTTPException, Body, APIRouter
 from schema.request import CreateToDoRequest
 from schema.response import ListToDoResponse, ToDoSchema
