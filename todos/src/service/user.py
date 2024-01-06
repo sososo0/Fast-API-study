@@ -1,4 +1,5 @@
 import bcrypt
+import random
 from datetime import datetime, timedelta
 from jose import jwt
 
@@ -43,3 +44,8 @@ class UserService:
        )
 
        return payload["sub"]
+
+
+    @staticmethod
+    def create_otp() -> int:
+        return random.randint(1000, 9999)

@@ -55,10 +55,13 @@ def user_log_in_handler(
 def create_otp_handler(
     request: CreateOTPRequest,
     access_token: str = Depends(get_access_token),
+    user_service: UserService = Depends(),
 ):
     # 1. access_token
     # 2. request body(email)
     # 3. otp create(random 4 digit)
+    otp: int = user_service.create_otp()
+
     # 4. redis otp(email, 1234, exp=3min)
     # 5. send otp to email
     return
