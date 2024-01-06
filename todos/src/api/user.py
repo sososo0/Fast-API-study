@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks
 
 from schema.request import SignUpRequest, LogInRequest, CreateOTPRequest, VerifyOTPRequest
 from schema.response import UserSchema, JWTResponse
@@ -68,6 +68,7 @@ def create_otp_handler(
 @router.post("/email/otp/verify")
 def create_otp_handler(
     request: VerifyOTPRequest,
+    background_tasks: BackgroundTasks,
     access_token: str = Depends(get_access_token),
     user_service: UserService = Depends(),
     user_repo: UserRepository = Depends(),
@@ -87,5 +88,8 @@ def create_otp_handler(
     if not user:
         raise HTTPException(status_code=401, detail="User Not Found")
     # 4. user(email)
-    user_service.send_email_to_user(email="admin@fastapi.com")
+    background_tasks.add_task(
+        user_service.send_email_to_user,
+        email="admin@fastapi.com"
+    )
     return UserSchema.from_orm(user)
