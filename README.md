@@ -72,7 +72,8 @@ POST /users/email/otp/verification
 
 - Python 3.10 + 
 - Docker 
-- MySQL 8.0 
+- MySQL 8.0
+- Redis 6.0 
 - IDE : PyCharm 
 
 <details>
